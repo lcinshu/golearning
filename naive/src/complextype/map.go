@@ -14,6 +14,12 @@ map 基本结构定义
 */
 func mapInit() {
 
+	// 0. 空数组
+	var nilMap map[string]int
+	fmt.Println(nilMap == nil)
+	fmt.Println(len(nilMap) == 0)
+	//nilMap["alice"]=32 // nil数组无法新增数据
+
 	// 1. 定义数组
 	ages1 := make(map[string]int)
 	ages1["alice"] = 31
@@ -56,4 +62,38 @@ func mapInit() {
 		fmt.Printf("%s\t%d\n\n", name, ages2[name])
 	}
 
+	// 5. 判断元素是否存在
+	// 5.1 如果key对应的元素存在，则返回该key对应的value；如果元素不存在，则返回该value对应类型的零值
+	// 5.2 map的下标语法会返回两个值；第二个值标识元素是否存在；false：不存在；true：存在
+	if age, ok := ages2["alice"]; ok {
+		fmt.Println(age)
+	}
 }
+
+/**
+比较两个map是否相同
+map之间不能通过等号进行比较（除了和nil进行比较之外）
+*/
+func equalMap(x, y map[string]int) bool {
+	if len(x) != len(y) {
+		return false
+	}
+	for k, xv := range x {
+		if yv, ok := y[k]; !ok || yv != xv {
+			return false
+		}
+	}
+	fmt.Sprintf("%q", x)
+	return true
+}
+
+/**
+map的key需要支持比较，如果map的key是复杂类型一般不支持直接比较，需要转换成基本类型作为key（key仅作为查找之用，不作为后续计算依据）
+下面的例子演示了如何使用map来记录提交相同的字符串列表的次数
+*/
+var m = make(map[string]int)
+
+func k(list []string) string { return fmt.Sprintf("%q", list) }
+
+func Add(list []string)       { m[k(list)]++ }
+func Count(list []string) int { return m[k(list)] }

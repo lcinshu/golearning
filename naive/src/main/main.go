@@ -14,5 +14,8 @@ func main() {
 	/**
 	slice操作
 	*/
-	complextype.SliceToOut()
+	//complextype.SliceToOut()
+
+	complextype.MapOut()
+
 }
