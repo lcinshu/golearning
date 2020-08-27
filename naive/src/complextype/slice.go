@@ -21,7 +21,10 @@ func SliceToOut() {
 	//reverseSlice()
 
 	// 3. copy
-	copySlice()
+	//copySlice()
+
+	// append
+	appendSlice()
 }
 
 /**
@@ -84,6 +87,7 @@ func reverseSlice() {
 
 /**
 这表示将src slice拷贝到dst slice，src比dst长，就截断，src比dst短，则只拷贝src那部分。
+共享底层数组
 */
 func copySlice() {
 	s1 := []int{11, 22, 33}
@@ -96,6 +100,45 @@ func copySlice() {
 	fmt.Println(num) // 3
 	fmt.Println(s2)  // [11,22,33,0,0]
 	fmt.Println(s3)  // [11,22]
+}
+
+/**
+slice的append函数有些不同
+
+1. append会返回一个新的slice指针
+*/
+func appendSlice() {
+	appendDemo := []int{1, 2, 3, 4, 5}
+	fmt.Println(&appendDemo[0])
+	x := append(appendDemo, 4)
+	y := append(appendDemo, 5)
+
+	fmt.Println(x) // [1 2 4]
+	fmt.Printf("%T\n", x)
+	fmt.Println(y) // [1 2 5]
+	fmt.Printf("%T\n", y)
+
+}
+
+/**
+1. 判断原slice长度是否小于容量，如果小于，则直接新增
+2. 如果len<cap，判断是否小于两倍的len，如果小于，则令cap=2*len
+*/
+func appendInt(x []int, y int) []int {
+	var z []int
+	len := len(x) + 1
+	if len < cap(x) {
+		z = x[:len]
+	} else {
+		zcap := len
+		if zcap < 2*len {
+			zcap = 2 * len
+		}
+		z = make([]int, len, zcap)
+		copy(z, x)
+	}
+	z[len] = y
+	return z
 }
 
 /**
