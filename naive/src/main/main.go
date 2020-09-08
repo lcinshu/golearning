@@ -29,5 +29,17 @@ func main() {
 	//Linkedlist.MainOut()
 
 	// 反转链表
-	Linkedlist.MainOut1()
+	//Linkedlist.MainOut1()
+
+	// 合并两个有序链表
+	//Linkedlist.MainOut2()
+
+	// 删除链表中重复节点
+	//Linkedlist.DeleteRepetNode()
+
+	// 删除倒数第N个链表节点
+	//Linkedlist.RemoveNthFromEnd()
+
+	// 交换链表相邻两个节点
+	Linkedlist.SwapPairs()
 }
