@@ -1,8 +1,7 @@
 package main
 
 import (
-	"naive/src/leetcode/datastructure/Linkedlist"
-	_ "naive/src/leetcode/datastructure/Linkedlist"
+	"hello-go/coding/datastructure/Linkedlist"
 )
 
 //func main() {
@@ -41,5 +40,5 @@ func main() {
 	//Linkedlist.RemoveNthFromEnd()
 
 	// 交换链表相邻两个节点
-	Linkedlist.SwapPairs()
+	linkedlist.SwapPairs()
 }

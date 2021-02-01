@@ -1,3 +1,3 @@
-module golearning
+module hello-go
 
-go 1.12
+go 1.15

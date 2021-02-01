@@ -1,8 +1,8 @@
-# golearning
-记录go语言学习
+# hello-go
+hello系列——go篇
 
-language：主要记录go基本语法学习过程
+记录go语言学习历程
 
-algorithms：熟悉了go基本语法之后，尝试使用go语言刷leetcode上的题目(ps：leetcode那个插件是真的难用)
+grammar：go基本语法学习记录，内容较杂，主要是为了方便语法的基本数据结构练习
 
-naive：主要是为了熟悉go基本语法
+coding：使用go语言刷刷题(ps：leetcode那个插件是真的难用，也就方便摸鱼而已)
